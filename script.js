@@ -58,10 +58,29 @@ function playRound(humanChoice, computerChoice) {
         // Player wins
         alert("You win! Paper beats rock.");
         humanScore++;
-    } else {
-        console.log("Unexpected error")
     }
+
     console.log(`Computer score: ${computerScore} | Player score: ${humanScore}`)
 }
 
-playRound(getHumanChoice(), getComputerChoice());
+function playGame() {
+    let round = 0;
+
+    while (round < 5) {
+        playRound(getHumanChoice(), getComputerChoice());
+        round++;
+        console.log(`Round: ${round}`)
+    }
+
+    if (computerScore === humanScore) {
+        alert(`Game over! You drew.\nYour score: ${humanScore} | Computer score: ${computerScore}`);
+    } else if (computerScore > humanScore) {
+        alert(`Game over! You lost, better luck next time!\nYour score: ${humanScore} | Computer score: ${computerScore}`);
+    } else if (humanScore > computerScore) {
+        alert(`Game over! You won, congrats!\nYour score: ${humanScore} | Computer score: ${computerScore}`);
+    } else {
+        console.log("Unexpected error");
+    }
+}
+
+playGame();
