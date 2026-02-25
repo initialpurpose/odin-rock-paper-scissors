@@ -27,7 +27,9 @@ function getHumanChoice() {
         // Get user choice
         let choice = prompt("Rock, paper, or scissors?")
 
-        if (choice.toLowerCase() === "rock" || choice.toLowerCase() === "paper" || choice.toLowerCase() === "scissors") {
+        if (choice.toLowerCase() === "rock" ||
+            choice.toLowerCase() === "paper" ||
+            choice.toLowerCase() === "scissors") {
             validChoice = true;
             return choice.toLowerCase();
         } else {
@@ -77,11 +79,14 @@ function playGame() {
     }
 
     if (computerScore === humanScore) {
-        alert(`Game over! You drew.\nYour score: ${humanScore} | Computer score: ${computerScore}`);
+        alert(`Game over! You drew.
+        \nYour score: ${humanScore} | Computer score: ${computerScore}`);
     } else if (computerScore > humanScore) {
-        alert(`Game over! You lost, better luck next time!\nYour score: ${humanScore} | Computer score: ${computerScore}`);
+        alert(`Game over! You lost, better luck next time!
+        \nYour score: ${humanScore} | Computer score: ${computerScore}`);
     } else if (humanScore > computerScore) {
-        alert(`Game over! You won, congrats!\nYour score: ${humanScore} | Computer score: ${computerScore}`);
+        alert(`Game over! You won, congrats!
+        \nYour score: ${humanScore} | Computer score: ${computerScore}`);
     } else {
         console.log("Unexpected error");
     }
