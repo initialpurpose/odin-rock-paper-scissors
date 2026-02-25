@@ -15,6 +15,7 @@ function getComputerChoice() {
         choice = "scissors";
     }
     // Return choice
+    console.log(`Computer chooses: ${choice}`)
     return choice;
 }
 
@@ -29,3 +30,38 @@ function getHumanChoice() {
         getHumanChoice();
     }
 }
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        alert("You drew! Try again.");
+    } else if (computerChoice === "rock" && humanChoice === "scissors") {
+        // Computer wins
+        alert("You lose! Rock beats scissors.");
+        computerScore++;
+    } else if (computerChoice === "scissors" && humanChoice === "paper") {
+        // Computer wins
+        alert("You lose! Scissors beats paper.");
+        computerScore++;
+    } else if (computerChoice === "paper" && humanChoice === "rock") {
+        // Computer wins
+        alert("You lose! Paper beats rock.");
+        computerScore++;
+    } else if (computerChoice === "scissors" && humanChoice === "rock") {
+        // Player wins
+        alert("You win! Rock beats scissors.");
+        humanScore++;
+    } else if (computerChoice === "paper" && humanChoice === "scissors") {
+        // Player wins
+        alert("You win! Scissors beats paper.");
+        humanScore++;
+    } else if (computerChoice === "rock" && humanChoice === "paper") {
+        // Player wins
+        alert("You win! Paper beats rock.");
+        humanScore++;
+    } else {
+        console.log("Unexpected error")
+    }
+    console.log(`Computer score: ${computerScore} | Player score: ${humanScore}`)
+}
+
+playRound(getHumanChoice(), getComputerChoice());
