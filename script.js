@@ -15,4 +15,14 @@ function getComputerChoice() {
     return choice;
 }
 
-console.log(getComputerChoice());
+function getHumanChoice() {
+    // Get user choice
+    let choice = prompt("Rock, paper, or scissors?")
+
+    if (choice.toLowerCase() === "rock" || choice.toLowerCase() === "paper" || choice.toLowerCase() === "scissors") {
+        return choice.toLowerCase();
+    } else {
+        alert("Your choice was not formatted correctly.")
+        getHumanChoice();
+    }
+}
