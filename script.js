@@ -1,6 +1,11 @@
 let humanScore = 0;
 let computerScore = 0;
 
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
+
+
 function getComputerChoice() {
     // Get a random float between 0 and 1
     let rand = Math.random();
@@ -20,25 +25,24 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let validChoice = false;
+  let validChoice = false;
 
-    // Check the user enters a valid choice
-    while (!validChoice) {
-        // Get user choice
-        let choice = prompt("Rock, paper, or scissors?")
+  // Check the user enters a valid choice
+  while (!validChoice) {
+    // Get user choice
+    let choice = prompt("Rock, paper, or scissors?")
 
-        if (choice.toLowerCase() === "rock" ||
-            choice.toLowerCase() === "paper" ||
-            choice.toLowerCase() === "scissors") {
-            validChoice = true;
-            return choice.toLowerCase();
-        } else {
-            alert("Your choice was not formatted correctly.")
-        }
+    if (choice.toLowerCase() === "rock" ||
+      choice.toLowerCase() === "paper" ||
+      choice.toLowerCase() === "scissors") {
+      validChoice = true;
+      return choice.toLowerCase();
+    } else {
+      alert("Your choice was not formatted correctly.")
     }
+  }
 }
 
-/*
  function playRound(humanChoice, computerChoice) {
      if (humanChoice === computerChoice) {
          alert("You drew! Try again.");
@@ -68,10 +72,22 @@ function getHumanChoice() {
          humanScore++;
      }
 
-
 console.log(`Computer score: ${computerScore} | Player score: ${humanScore}`)
 }
 
+rockBtn.addEventListener('click', (event) => {
+  playRound("rock", getComputerChoice());
+});
+
+paperBtn.addEventListener('click', (event) => {
+  playRound("paper", getComputerChoice());
+});
+
+scissorsBtn.addEventListener('click', (event) => {
+  playRound("scissors", getComputerChoice());
+});
+
+/*
 function playGame() {
     let round = 0;
 
