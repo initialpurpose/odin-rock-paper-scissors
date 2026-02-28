@@ -50,7 +50,6 @@ function playRound(humanChoice, computerChoice) {
   } else if (computerChoice === "paper" && humanChoice === "scissors") {
     // Player wins
     div.textContent = "You win! Scissors beats paper.";
-    alert("You win! Scissors beats paper.");
     humanScore++;
   } else if (computerChoice === "rock" && humanChoice === "paper") {
     // Player wins
@@ -75,20 +74,28 @@ function playRound(humanChoice, computerChoice) {
     } else {
       console.log("Unexpected error");
     }
+
+    div.textContent = "Game over!";
   }
 }
 
-rockBtn.addEventListener('click', (event) => {
-  playRound("rock", getComputerChoice());
-  round++;
+rockBtn.addEventListener('click', () => {
+  if (round <= 5) {
+    playRound("rock", getComputerChoice());
+    round++;
+  }
 });
 
-paperBtn.addEventListener('click', (event) => {
-  playRound("paper", getComputerChoice());
-  round++;
+paperBtn.addEventListener('click', () => {
+  if (round <= 5) {
+    playRound("paper", getComputerChoice());
+    round++;
+  }
 });
 
-scissorsBtn.addEventListener('click', (event) => {
-  playRound("scissors", getComputerChoice());
-  round++;
+scissorsBtn.addEventListener('click', () => {
+  if (round <= 5) {
+    playRound("scissors", getComputerChoice());
+    round++;
+  }
 });
