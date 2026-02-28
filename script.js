@@ -4,6 +4,10 @@ let computerScore = 0;
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
+const container = document.querySelector(".container");
+
+const div = document.createElement("div");
+const score = document.createElement("p");
 
 function getComputerChoice() {
   // Get a random float between 0 and 1
@@ -44,34 +48,37 @@ function getHumanChoice() {
 
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
-    alert("You drew! Try again.");
+    div.textContent = "You drew! Try again.";
   } else if (computerChoice === "rock" && humanChoice === "scissors") {
     // Computer wins
-    alert("You lose! Rock beats scissors.");
+    div.textContent = "You lose! Rock beats scissors.";
     computerScore++;
   } else if (computerChoice === "scissors" && humanChoice === "paper") {
     // Computer wins
-    alert("You lose! Scissors beats paper.");
+    div.textContent = "You lose! Scissors beats paper.";
     computerScore++;
   } else if (computerChoice === "paper" && humanChoice === "rock") {
     // Computer wins
-    alert("You lose! Paper beats rock.");
+    div.textContent = "You lose! Paper beats rock.";
     computerScore++;
   } else if (computerChoice === "scissors" && humanChoice === "rock") {
     // Player wins
-    alert("You win! Rock beats scissors.");
+    div.textContent = "You win! Rock beats scissors.";
     humanScore++;
   } else if (computerChoice === "paper" && humanChoice === "scissors") {
     // Player wins
+    div.textContent = "You win! Scissors beats paper.";
     alert("You win! Scissors beats paper.");
     humanScore++;
   } else if (computerChoice === "rock" && humanChoice === "paper") {
     // Player wins
-    alert("You win! Paper beats rock.");
+    div.textContent = "You win! Paper beats rock.";
     humanScore++;
   }
 
-  console.log(`Computer score: ${computerScore} | Player score: ${humanScore}`)
+  container.appendChild(div);
+  score.textContent = `Computer score: ${computerScore} | Player score: ${humanScore}`;
+  div.appendChild(score);
 }
 
 rockBtn.addEventListener('click', (event) => {
@@ -86,29 +93,26 @@ scissorsBtn.addEventListener('click', (event) => {
   playRound("scissors", getComputerChoice());
 });
 
-
-/*
 function playGame() {
-    let round = 0;
+  let round = 0;
 
-    while (round < 5) {
-        playRound(getHumanChoice(), getComputerChoice());
-        round++;
-    }
+  while (round < 5) {
 
-    if (computerScore === humanScore) {
-        alert(`Game over! You drew.
+    round++;
+  }
+
+  if (computerScore === humanScore) {
+    alert(`Game over! You drew.
         \nYour score: ${humanScore} | Computer score: ${computerScore}`);
-    } else if (computerScore > humanScore) {
-        alert(`Game over! You lost, better luck next time!
+  } else if (computerScore > humanScore) {
+    alert(`Game over! You lost, better luck next time!
         \nYour score: ${humanScore} | Computer score: ${computerScore}`);
-    } else if (humanScore > computerScore) {
-        alert(`Game over! You won, congrats!
+  } else if (humanScore > computerScore) {
+    alert(`Game over! You won, congrats!
         \nYour score: ${humanScore} | Computer score: ${computerScore}`);
-    } else {
-        console.log("Unexpected error");
-    }
+  } else {
+    console.log("Unexpected error");
+  }
 }
 
 playGame();
-*/
