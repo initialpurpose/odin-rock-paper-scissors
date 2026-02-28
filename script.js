@@ -1,11 +1,12 @@
 let humanScore = 0;
 let computerScore = 0;
+let round = 1;
 
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
-const container = document.querySelector(".container");
 
+const container = document.querySelector(".container");
 const div = document.createElement("div");
 const score = document.createElement("p");
 
@@ -79,40 +80,34 @@ function playRound(humanChoice, computerChoice) {
   container.appendChild(div);
   score.textContent = `Computer score: ${computerScore} | Player score: ${humanScore}`;
   div.appendChild(score);
+
+  if (round === 5) {
+    if (computerScore === humanScore) {
+      alert(`Game over! You drew.
+      \nYour score: ${humanScore} | Computer score: ${computerScore}`);
+    } else if (computerScore > humanScore) {
+      alert(`Game over! You lost, better luck next time!
+      \nYour score: ${humanScore} | Computer score: ${computerScore}`);
+    } else if (humanScore > computerScore) {
+      alert(`Game over! You won, congrats!
+      \nYour score: ${humanScore} | Computer score: ${computerScore}`);
+    } else {
+      console.log("Unexpected error");
+    }
+  }
 }
 
 rockBtn.addEventListener('click', (event) => {
   playRound("rock", getComputerChoice());
+  round++;
 });
 
 paperBtn.addEventListener('click', (event) => {
   playRound("paper", getComputerChoice());
+  round++;
 });
 
 scissorsBtn.addEventListener('click', (event) => {
   playRound("scissors", getComputerChoice());
+  round++;
 });
-
-function playGame() {
-  let round = 0;
-
-  while (round < 5) {
-
-    round++;
-  }
-
-  if (computerScore === humanScore) {
-    alert(`Game over! You drew.
-        \nYour score: ${humanScore} | Computer score: ${computerScore}`);
-  } else if (computerScore > humanScore) {
-    alert(`Game over! You lost, better luck next time!
-        \nYour score: ${humanScore} | Computer score: ${computerScore}`);
-  } else if (humanScore > computerScore) {
-    alert(`Game over! You won, congrats!
-        \nYour score: ${humanScore} | Computer score: ${computerScore}`);
-  } else {
-    console.log("Unexpected error");
-  }
-}
-
-playGame();
