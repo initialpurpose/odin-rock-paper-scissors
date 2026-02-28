@@ -28,25 +28,6 @@ function getComputerChoice() {
   return choice;
 }
 
-function getHumanChoice() {
-  let validChoice = false;
-
-  // Check the user enters a valid choice
-  while (!validChoice) {
-    // Get user choice
-    let choice = prompt("Rock, paper, or scissors?")
-
-    if (choice.toLowerCase() === "rock" ||
-      choice.toLowerCase() === "paper" ||
-      choice.toLowerCase() === "scissors") {
-      validChoice = true;
-      return choice.toLowerCase();
-    } else {
-      alert("Your choice was not formatted correctly.")
-    }
-  }
-}
-
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     div.textContent = "You drew! Try again.";
